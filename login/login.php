@@ -8,10 +8,9 @@
 	}
 ?>
 <?php
-	$ID=$_POST['ID'];
-	$password=$_POST['password'];
-	$ID=base64_encode($ID);
-	$password=$password." PLUS salting string"; //PLUS salting
+	
+	$ID=base64_encode($_POST['ID']);
+	$password=$_POST['password']." PLUS salting string"; //PLUS salting
 	$password=hash('sha512',hash('sha256',$password));
 	require_once("DB_connect_for_login.php");
 	if($DB_connect){
